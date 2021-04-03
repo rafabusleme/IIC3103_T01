@@ -8,6 +8,7 @@
           v-for="index in parseInt(breakingBadSeasons)"
           :key="index"
           :title="`Temporada ${index}`"
+          @click.native="goToSeason('breaking-bad', index)"
         />
       </div>
       <div class="serie">
@@ -16,6 +17,7 @@
           v-for="index in parseInt(betterCallSaulSeasons)"
           :key="index"
           :title="`Temporada ${index}`"
+          @click.native="goToSeason('better-call-saul', index)"
         />
       </div>
     </div>
@@ -48,10 +50,18 @@ export default {
     this.betterCallSaulSeasons = getMax(secondResponse, 'season')
   },
   fetchOnServer: false,
+  methods: {
+    goToSeason(serieName, seasonNumber) {
+      this.$router.push({
+        path: `${serieName}/season`,
+        query: { number: seasonNumber },
+      })
+    },
+  },
 }
 </script>
 
-<style>
+<style scoped>
 .home-container {
   display: flex;
   flex-direction: column;
@@ -68,13 +78,6 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-@media screen and (max-width: 1000px) {
-  .series-container {
-    width: 80%;
-    align-items: center;
-    flex-direction: column;
-  }
-}
 .serie {
   width: 50%;
   display: flex;
@@ -85,5 +88,14 @@ export default {
   border-radius: 10px;
   border: 4px solid #29773e;
   background-color: #29773e;
+  max-height: 400px;
+  overflow-y: auto;
+}
+@media screen and (max-width: 1000px) {
+  .series-container {
+    width: 80%;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 </style>
