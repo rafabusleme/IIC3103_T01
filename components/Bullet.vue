@@ -22,15 +22,16 @@ export default {
 
 <style>
 .bullet-container {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 20px 10px;
-  margin: 10px;
-  border: 1px solid black;
+  margin: 5px 10px;
+  border: 2px solid #032202;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
-
 .bullet-container:hover {
   transform: scale(1.05);
 }

@@ -61,15 +61,29 @@ export default {
 .home-title {
   display: flex;
   margin: 20px;
+  color: #032202;
 }
 .series-container {
-  width: 50%;
+  width: 60%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+@media screen and (max-width: 1000px) {
+  .series-container {
+    width: 80%;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 .serie {
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px 50px;
+  margin: 5px;
+  border-radius: 10px;
+  border: 4px solid #29773e;
+  background-color: #29773e;
 }
 </style>

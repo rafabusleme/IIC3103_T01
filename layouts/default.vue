@@ -18,11 +18,13 @@ html {
 }
 .app-container {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #032202;
   background-image: url('../assets/imgs/app-background.jpg');
-  background-size: cover;
+  background-size: contain;
   box-sizing: border-box;
+  color: beige;
 }
 </style>
