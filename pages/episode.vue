@@ -14,26 +14,41 @@
           :key="index"
           class="bullet"
           :title="`${character}`"
+          @click.native="openModal(character)"
         />
       </div>
     </div>
+    <character-modal
+      v-if="showModal"
+      :character-name="characterName"
+      @close="showModal = false"
+    />
   </div>
 </template>
 
 <script>
 import { getEpisodeById } from '@/services/breakingBad'
+import CharacterModal from '@/components/Modal/CharacterModal'
 export default {
+  components: { CharacterModal },
   data() {
     return {
+      characterName: 'Walter+White',
       episodeData: {},
+      showModal: false,
     }
   },
   async fetch() {
-    console.log(this.$route.query.number)
     const response = await getEpisodeById(this.$axios, this.$route.query.number)
     this.episodeData = response[0]
   },
   fetchOnServer: false,
+  methods: {
+    openModal(characterName) {
+      this.characterName = characterName.replace(' ', '+')
+      this.showModal = true
+    },
+  },
 }
 </script>
 
