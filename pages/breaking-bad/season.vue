@@ -11,6 +11,7 @@
           :key="index"
           class="bullet"
           :title="`${index + 1}: ${episode.title}`"
+          @click.native="goToEpisode(episode.episode_id)"
         />
       </div>
       <div v-else class="episodes">No hay capitulos para mostrar :(</div>
@@ -47,6 +48,14 @@ export default {
         )
       }
       return []
+    },
+  },
+  methods: {
+    goToEpisode(episodeId) {
+      this.$router.push({
+        path: `/episode`,
+        query: { number: episodeId },
+      })
     },
   },
 }
