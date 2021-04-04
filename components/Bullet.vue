@@ -36,8 +36,7 @@ export default {
 }
 img {
   width: 20%;
-  height: 50%;
-  max-height: 50px;
+  height: 80%;
   border-radius: 100px;
   margin-right: 20px;
 }
