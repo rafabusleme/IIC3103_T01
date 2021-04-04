@@ -37,6 +37,12 @@ export default {
     '@nuxtjs/axios',
   ],
 
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: 'https://tarea-1-breaking-bad.herokuapp.com/api',
+    },
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
