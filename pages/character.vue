@@ -86,6 +86,12 @@ export default {
   background-color: #29773e;
   padding: 20px 50px;
 }
+.characters {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 400px;
+  overflow-y: auto;
+}
 .bullet {
   width: 40%;
 }
