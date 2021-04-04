@@ -32,7 +32,7 @@
               v-for="(season, index) in character.better_call_saul_appearance"
               :key="index"
               class="bullet"
-              @click.native="goToSeason('better-call-saul', index + 1)"
+              @click="goToSeason('better-call-saul', index + 1)"
             >
               {{ index + 1 }}
             </button>
@@ -59,7 +59,7 @@ export default {
   },
   async fetch() {
     const response = await getCharacterByName(this.$axios, this.characterName)
-    this.character = response
+    this.character = response[0]
   },
   fetcrOnServer: false,
   methods: {
