@@ -19,7 +19,7 @@ export const getEpisodeById = async function (axios, episodeId) {
 export const getCharacterByName = async function (axios, characterName) {
   try {
     const response = await axios.get(`/characters?name=${characterName}`)
-    return response.data[0]
+    return response.data
   } catch (err) {
     console.error(err)
   }
