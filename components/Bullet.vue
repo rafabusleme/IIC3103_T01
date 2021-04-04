@@ -1,6 +1,6 @@
 <template>
   <div class="bullet-container">
-    <img v-if="img" src="" alt="" />
+    <img v-if="img" :src="img" alt="" />
     <div>{{ title }}</div>
   </div>
 </template>
@@ -20,11 +20,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .bullet-container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 20px 10px;
   margin: 5px 10px;
@@ -34,5 +33,12 @@ export default {
 }
 .bullet-container:hover {
   transform: scale(1.05);
+}
+img {
+  width: 20%;
+  height: 50%;
+  max-height: 50px;
+  border-radius: 100px;
+  margin-right: 20px;
 }
 </style>
