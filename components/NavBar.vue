@@ -4,11 +4,15 @@
       <nuxt-link to="/" class="item">Home</nuxt-link>
       <nuxt-link to="/about" class="item">About</nuxt-link>
     </div>
+    <search />
   </div>
 </template>
 
 <script>
-export default {}
+import Search from '@/components/Search'
+export default {
+  components: { Search },
+}
 </script>
 
 <style>
