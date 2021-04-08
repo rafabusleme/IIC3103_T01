@@ -4,15 +4,17 @@
       <div v-if="character" class="character-container">
         <div class="avatar">
           <img :src="character.img" alt="" />
-          <button @click="$emit('close')">X</button>
+          <button @click="$emit('close')">Cerrar</button>
         </div>
         <div class="character-data">
           <span>Nombre: {{ character.name }}</span>
-          <span>Cumpleaños: {{ character.birthday }}</span>
-          <span>Estado: {{ character.status }}</span>
-          <span>Ocupacion: {{ character.occupation }}</span>
           <span>Nickname: {{ character.nickname }}</span>
           <span>Actor/Actriz: {{ character.portrayed }}</span>
+          <span>Cumpleaños: {{ character.birthday }}</span>
+          <span>Estado: {{ character.status }}</span>
+          <span v-if="typeof character.occupation == 'array'">
+            Ocupacion: {{ character.occupation.join(', ') }}
+          </span>
         </div>
         <div class="seasons">
           <div class="breaking-bad-seasons">
@@ -116,10 +118,11 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   color: beige;
   text-align: center;
   margin: 5px;
+  border-radius: 100px;
 }
 </style>
