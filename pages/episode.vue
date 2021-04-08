@@ -1,5 +1,5 @@
 <template>
-  <div class="episode-container">
+  <div v-if="episodeData" class="episode-container">
     <div class="episode-title">
       <h3>{{ episodeData.series }} - {{ episodeData.title }}</h3>
     </div>
