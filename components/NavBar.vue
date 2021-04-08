@@ -2,7 +2,6 @@
   <div class="nav-container">
     <div class="items">
       <nuxt-link to="/" class="item">Home</nuxt-link>
-      <nuxt-link to="/about" class="item">About</nuxt-link>
     </div>
     <search />
   </div>
