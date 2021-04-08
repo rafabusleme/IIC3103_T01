@@ -28,4 +28,11 @@ html {
   box-sizing: border-box;
   color: beige;
 }
+button {
+  background-color: #29773e;
+  color: white;
+  padding: 10px;
+  border: 1px solid #032202;
+  cursor: pointer;
+}
 </style>
