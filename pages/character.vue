@@ -1,8 +1,8 @@
 <template>
   <div class="character-container">
     <div class="characters-title">Resultados para: {{ $route.query.name }}</div>
-    <div class="characters-data">
-      <div v-if="characters" class="characters">
+    <div v-if="characters" class="characters-data">
+      <div class="characters">
         <bullet
           v-for="(char, index) in characters"
           :key="index"
@@ -12,7 +12,14 @@
           @click.native="openModal(char.name)"
         />
       </div>
+      <div class="pagination">
+        <button v-if="page > 1" @click="getMoreCharacters(false)">Prev</button>
+        <button v-if="characters.length == 10" @click="getMoreCharacters()">
+          Next
+        </button>
+      </div>
     </div>
+
     <character-modal
       v-if="showModal"
       :character-name="characterName"
@@ -22,7 +29,10 @@
 </template>
 
 <script>
-import { getCharacterByName } from '@/services/breakingBad'
+import {
+  getCharacterByName,
+  getPaginatedCharacters,
+} from '@/services/breakingBad'
 import CharacterModal from '@/components/Modal/CharacterModal'
 export default {
   components: { CharacterModal },
@@ -30,6 +40,7 @@ export default {
     return {
       characters: [],
       characterName: '',
+      page: 1,
       showModal: false,
     }
   },
@@ -53,12 +64,24 @@ export default {
         this.$route.query.name
       )
       this.characters = response
+      this.page = 1
     },
   },
   methods: {
     openModal(characterName) {
       this.characterName = characterName.replace(' ', '+')
       this.showModal = true
+    },
+    async getMoreCharacters(next = true) {
+      this.page = next ? this.page + 1 : this.page - 1
+      const offset = (this.page - 1) * 10
+      const response = await getPaginatedCharacters(
+        this.$axios,
+        this.$route.query.name,
+        10,
+        offset
+      )
+      this.characters = response
     },
   },
 }
