@@ -1,7 +1,7 @@
 <template>
   <Modal>
     <div slot="content">
-      <div v-if="character" class="character-container">
+      <div v-if="character.name" class="character-container">
         <div class="avatar">
           <img :src="character.img" alt="" />
           <button @click="$emit('close')">Cerrar</button>
@@ -12,9 +12,7 @@
           <span>Actor/Actriz: {{ character.portrayed }}</span>
           <span>Cumpleaños: {{ character.birthday }}</span>
           <span>Estado: {{ character.status }}</span>
-          <span v-if="typeof character.occupation == 'array'">
-            Ocupacion: {{ character.occupation.join(', ') }}
-          </span>
+          <span>Ocupacion: {{ character.occupation.join(', ') }} </span>
         </div>
         <div class="seasons">
           <div class="breaking-bad-seasons">
