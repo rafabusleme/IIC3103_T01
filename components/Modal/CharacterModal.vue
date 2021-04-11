@@ -37,6 +37,13 @@
               {{ index + 1 }}
             </button>
           </div>
+          <div v-if="quotes.length" class="quotes">
+            Citas:
+            <div v-for="(quote, index) in quotes" :key="index">
+              {{ index + ') ' + quote.quote }}
+            </div>
+          </div>
+          <div v-else>El personaje no tiene citas :(</div>
         </div>
       </div>
     </div>
@@ -44,7 +51,7 @@
 </template>
 
 <script>
-import { getCharacterByName } from '@/services/breakingBad'
+import { getCharacterByName, getQuotesByAuthor } from '@/services/breakingBad'
 export default {
   props: {
     characterName: {
@@ -55,11 +62,13 @@ export default {
   data() {
     return {
       character: {},
+      quotes: [],
     }
   },
   async fetch() {
     const response = await getCharacterByName(this.$axios, this.characterName)
     this.character = response[0]
+    this.quotes = await getQuotesByAuthor(this.$axios, this.characterName)
   },
   fetcrOnServer: false,
   methods: {
@@ -83,6 +92,8 @@ export default {
   height: 100%;
   min-height: 300px;
   padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
 }
 .avatar {
   display: flex;

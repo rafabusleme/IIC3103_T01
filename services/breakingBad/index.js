@@ -40,3 +40,12 @@ export const getPaginatedCharacters = async function (
     console.error(err)
   }
 }
+
+export const getQuotesByAuthor = async function (axios, characterName) {
+  try {
+    const response = await axios.get(`/quote?author=${characterName}`)
+    return response.data
+  } catch (err) {
+    console.error(err)
+  }
+}
